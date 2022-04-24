@@ -1,5 +1,5 @@
-# JavlibrarySukebeiShortcuts
-This script adds a clickable shortcut on video toolbars on the Javlibrary scene which automatically opens a search tab for sukebei
+# TBThumbnailResize
+Resizes thumbnails
 
 # Installation
 1. install the tampermonkey browser extension
