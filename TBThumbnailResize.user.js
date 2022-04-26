@@ -5,12 +5,13 @@
 // @updateURL    https://github.com/Runisco/TBThumbnailResize/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBThumbnailResize/issues
 // @homepageURL  https://github.com/Runisco/TBThumbnailResize
-// @version      1.0.2
+// @version      1.1
 // @description  Resizes the thumbnails to make them easier to see
 // @author       Runisco
 // @match        https://forum.thotsbay.com/forums/*
 // @match        https://forum.thotsbay.com/trending/*
 // @match        https://forum.thotsbay.com/whats-new/*
+// @match        https://forum.thotsbay.com/watched/threads*
 // @exclude      https://forum.thotsbay.com/forums/help-support-suggestions.60/
 // @exclude      https://forum.thotsbay.com/forums/helping-the-community.35/
 // @exclude      https://forum.thotsbay.com/forums/reviews.55/
@@ -40,7 +41,7 @@ $('.js-threadList').find('a.DC_ThreadThumbnail_image').each(function(index){
     }
 });
 
-if (String(window.location.href).includes("/whats-new/")){
+if (['whats-new', 'watched/threads'].some(v => String(window.location.href).includes(v))){
     $('.structItemContainer').find('a.avatar.DC_ThreadThumbnail_image ').each(function(index){
         let thumbUrl = $(this).find('img').attr('style')
         if(!thumbUrl.includes('-Default-Thumbnail.png')){
