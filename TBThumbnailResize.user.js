@@ -2,9 +2,9 @@
 // @name         TBT
 // @namespace    https://github.com/runisco
 // @version      2.0.0
-// @updateURL    https://github.com/Runisco/TBThumbnailResize/raw/main/TBThumbnailResize.user.js
-// @downloadURL  https://github.com/Runisco/TBThumbnailResize/raw/main/TBThumbnailResize.user.js
-// @supportURL   https://github.com/Runisco/TBThumbnailResize/issues
+// @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
+// @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
+// @supportURL   https://github.com/Runisco/TBT/issues
 // @description  Resizes the thumbnails to make them easier to see
 // @author       Runisco
 // @match        https://simpcity.su/*
