@@ -1,5 +1,5 @@
 # TBThumbnailResize
-Resizes thumbnails
+Resizes thumbnails and some more
 
 # Installation
 1. install the tampermonkey browser extension
