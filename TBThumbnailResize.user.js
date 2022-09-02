@@ -4,7 +4,8 @@
 // @version      1.0.0
 // @description  Resizes the thumbnails to make them easier to see
 // @author       Runisco
-// @match        https://forum.thotsbay.to/*
+// @match        https://simpcity.su/*
+// @exclude      https://simpcity.su/forums/helping-the-community.35/
 // @icon         data:image/png;base64,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
 // @require      https://code.jquery.com/jquery-3.3.1.min.js
 // @require            https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -85,9 +86,9 @@ function resizeThumbnails(reset=false){
     let newWidth = GM_config.get('tbtWidth');
     let newHeight = GM_config.get('tbtHeight');
     let resizeDefault = GM_config.get('resizeDefault');
-    // console.log("newWidth: " + newWidth)
-    // console.log("newHeight: " + newHeight)
-    // console.log("reset default? :" + GM_config.get('resizeDefault'))
+    console.log("newWidth: " + newWidth)
+    console.log("newHeight: " + newHeight)
+    console.log("reset default? :" + GM_config.get('resizeDefault'))
     $('.js-threadList').find('a.DC_ThreadThumbnail_image').each(function(index){
         let thumbUrl = $(this).find('img').attr('style')
         if(reset){
