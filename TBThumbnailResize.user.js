@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.0.0
+// @version      2.0.0a
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
@@ -137,6 +137,7 @@ function genreSelection(reset=false){
 <ul class="listInline listInline--comma">
 
 
+<li><a href="?prefix_id[0]=3" class="labelLink" rel="nofollow"><span class="label label--onlyfans" dir="auto">Onlyfans</span></a></li>
 <li><a href="?prefix_id[0]=12" class="labelLink" rel="nofollow"><span class="label label--asian" dir="auto">Asian</span></a></li>
 <li><a href="?prefix_id[0]=13" class="labelLink" rel="nofollow"><span class="label label--thicc" dir="auto">T.H.I.C.C</span></a></li>
 <li><a href="?prefix_id[0]=14" class="labelLink" rel="nofollow"><span class="label label--teen" dir="auto">Teen</span></a></li>
