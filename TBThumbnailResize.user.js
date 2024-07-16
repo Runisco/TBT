@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.3
+// @version      2.3.1
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
@@ -101,10 +101,10 @@ function resizeThumbnails(reset=false){
     var blockbody = false
     var structitemcontainer = false
 
-    if (['/trending/'].some(v => String(window.location.href).includes(v))){
+    if (['/trending/'].some(v => String(window.location.href).includes(v)) && !['/search-forums/'].some(v => String(window.location.href).includes(v))){
         regular = false
         if (debug){console.log("resizeThumbnails func: alternate page type found. regular set to false, jumping.")}
-    } else if (["/whats-new/posts/", "/watched/", "/find-threads/"].some(v => String(window.location.href).includes(v))){
+    } else if (["/whats-new/posts/", "/watched/", "/find-threads/", "/search-forums/"].some(v => String(window.location.href).includes(v))){
         regular = false
         structitemcontainer = true
         if (debug){console.log("resizeThumbnails func: structitemcontainer page type found. structitemcontainer set to true, jumping.")}
