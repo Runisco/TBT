@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.2
+// @version      2.2a
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
@@ -21,7 +21,7 @@
 
 /* globals $, GM_config */
 
-var debug = true
+var debug = false
 
 var iconData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAPZJREFUWEftlrENwjAQRb8bWppzSQcN9AwArAEVHQPQUdAxAAuQNYCGGWABRJWrYIBDQbYUgiESSpzm0sa+e3r37cSg4cc03B8KoAbUgBowzLwHMC65kB4AFiLSM8YsAbQC619riCjJ3jHzGUC/pO7tYwQOaJgv5oukabp2ACcimuSLu4ad0L4cUBvAjIiOfm9lAL/gogKISGKtnRfVO0P1GXANQESD0NyrBgiFMOt7iQUQCqE/TYdiQKNkgJmnALYA7sWkxwIYAdi5+b8dtVgA3sA1lIOqQ/jtIuqKyMZau6r7GJZexX8DxP5J1c+xGlADaqBxA0+67ujJ2qrzbQAAAABJRU5ErkJggg=='
 var menuIcon = $('<a href="#" id="tbtConfig" class="p-navgroup-link u-ripple p-navgroup-link--iconic p-navgroup-link--conversations js-badge--conversations badgeContainer rippleButton"><img width="23" height="5" src="' + iconData + '"></img></a>')
