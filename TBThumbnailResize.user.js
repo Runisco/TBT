@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.0.1
+// @version      2.1
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
@@ -89,23 +89,47 @@ function resizeThumbnails(reset=false){
     let newWidth = GM_config.get('tbtWidth');
     let newHeight = GM_config.get('tbtHeight');
     let resizeDefault = GM_config.get('resizeDefault');
-    console.log("newWidth: " + newWidth)
-    console.log("newHeight: " + newHeight)
-    console.log("reset default? :" + GM_config.get('resizeDefault'))
-    $('.js-threadList').find('a.DC_ThreadThumbnail_image').each(function(index){
+    //console.log("newWidth: " + newWidth)
+    //console.log("newHeight: " + newHeight)
+    //console.log("reset default? :" + GM_config.get('resizeDefault'))
+    $('.js-threadList').find('a.dcThumbnail').each(function(index){
         let thumbUrl = $(this).find('img').attr('style')
         if(reset){
-            $(this).attr('style','width: 75px; height: 50px;')
+            $(this).parent().parent().attr('style','width: calc(75px + 19px); height: calc(50px + 5px);')
+            $(this).attr('style','width: 75px; height: 50px; border-radius: 4px')
         }else if(!thumbUrl.includes('-Default-Thumbnail.png')){
-            $(this).attr('style','width: ' + newWidth + 'px; height: ' + newHeight + 'px;')
+            $(this).parent().parent().attr('style','width: calc(' + newWidth + 'px + 19px); height: calc(' + newHeight + 'px + 5px);')
+            $(this).attr('style','width: ' + newWidth + 'px; height: ' + newHeight + 'px; border-radius: 4px')
         } else {
             if (resizeDefault){
-                $(this).attr('style','width: ' + newWidth + 'px; height: 50;')
+                $(this).parent().parent().attr('style','width: calc(' + newWidth + 'px + 19px); height: calc(50px + 5px);')
+                $(this).attr('style','width: ' + newWidth + 'px; height: 50; border-radius: 4px')
             } else {
-                $(this).attr('style','width: 75px; height: 50;')
+                $(this).parent().parent().attr('style','width: calc(75px + 19px); height: calc(50px + 5px);')
+                $(this).attr('style','width: 75px; height: 50; border-radius: 4px')
             }
         }
     });
+
+    //
+    // Below code is before the migration after crash in july 2024, saved just in case.
+    //
+
+    // $('.js-threadList').find('a.DC_ThreadThumbnail_image').each(function(index){
+    //     let thumbUrl = $(this).find('img').attr('style')
+    //     console.log(thumbUrl)
+    //     if(reset){
+    //         $(this).attr('style','width: 75px; height: 50px;')
+    //     }else if(!thumbUrl.includes('-Default-Thumbnail.png')){
+    //         $(this).attr('style','width: ' + newWidth + 'px; height: ' + newHeight + 'px;')
+    //     } else {
+    //         if (resizeDefault){
+    //             $(this).attr('style','width: ' + newWidth + 'px; height: 50;')
+    //         } else {
+    //             $(this).attr('style','width: 75px; height: 50;')
+    //         }
+    //     }
+    // });
 
     if (['whats-new', 'watched/threads'].some(v => String(window.location.href).includes(v))){
         $('.structItemContainer').find('a.avatar.DC_ThreadThumbnail_image ').each(function(index){
@@ -138,6 +162,7 @@ function genreSelection(reset=false){
 
 
 <li><a href="?prefix_id[0]=3" class="labelLink" rel="nofollow"><span class="label label--onlyfans" dir="auto">Onlyfans</span></a></li>
+<li><a href="?prefix_id[0]=39" class="labelLink" rel="nofollow"><span class="label label--fansly" dir="auto">Fansly</span></a></li>
 <li><a href="?prefix_id[0]=12" class="labelLink" rel="nofollow"><span class="label label--asian" dir="auto">Asian</span></a></li>
 <li><a href="?prefix_id[0]=13" class="labelLink" rel="nofollow"><span class="label label--thicc" dir="auto">T.H.I.C.C</span></a></li>
 <li><a href="?prefix_id[0]=14" class="labelLink" rel="nofollow"><span class="label label--teen" dir="auto">Teen</span></a></li>
