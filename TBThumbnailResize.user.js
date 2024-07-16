@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.2a
+// @version      2.3
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
@@ -10,6 +10,7 @@
 // @match        https://simpcity.su/*
 // @match        https://simpcity.su/search/*
 // @match        https://simpcity.su/search-forums/trending/
+// @match        https://simpcity.su/whats-new/*
 // @exclude      https://simpcity.su/forums/helping-the-community.35/
 // @icon         data:image/png;base64,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
 // @require      https://code.jquery.com/jquery-3.3.1.min.js
@@ -97,18 +98,24 @@ function resizeThumbnails(reset=false){
     //console.log("newHeight: " + newHeight)
     //console.log("reset default? :" + GM_config.get('resizeDefault'))
     var regular = true
-    var search = false
+    var blockbody = false
+    var structitemcontainer = false
+
     if (['/trending/'].some(v => String(window.location.href).includes(v))){
         regular = false
         if (debug){console.log("resizeThumbnails func: alternate page type found. regular set to false, jumping.")}
-    } else if (["/search/"].some(v => String(window.location.href).includes(v))){
+    } else if (["/whats-new/posts/", "/watched/", "/find-threads/"].some(v => String(window.location.href).includes(v))){
         regular = false
-        search = true
-        if (debug){console.log("resizeThumbnails func: search page type found. search set to true, jumping.")}
+        structitemcontainer = true
+        if (debug){console.log("resizeThumbnails func: structitemcontainer page type found. structitemcontainer set to true, jumping.")}
+    }else if (["/search/", "/whats-new/"].some(v => String(window.location.href).includes(v))){
+        regular = false
+        blockbody = true
+        if (debug){console.log("resizeThumbnails func: blockbody page type found. blockbody set to true, jumping.")}
     }
-    if (debug){console.log("Regular: " + regular + "\nSearch: " + search)}
+    // if (debug){console.log("Regular: " + regular + "\nSearch: " + search)}
 
-    if (regular && !search){
+    if (regular){
         $('.js-threadList').find('a.dcThumbnail').each(function(index){
             if (debug){console.log("resizeThumnails func: Attempted to go through each a.dcThumbnail in .js-threadList")}
             let thumbUrl = $(this).find('img').attr('style')
@@ -147,7 +154,7 @@ function resizeThumbnails(reset=false){
             //     }
             // });
         });
-    } else if(!regular && !search){
+    } else if(structitemcontainer){
         if (debug){console.log("resizeThumnails func: Landed inside alternate method")}
         $('.structItemContainer').find('a.dcThumbnail').each(function(index){
             let thumbUrl = $(this).find('img').attr('style')
@@ -168,7 +175,7 @@ function resizeThumbnails(reset=false){
             }
         });
 
-    } else if(!regular && search){
+    } else if(blockbody){
         if (debug){console.log("resizeThumnails func: Landed inside search method")}
         $('.block-body').find('a.dcThumbnail').each(function(index){
             let thumbUrl = $(this).find('img').attr('style')
