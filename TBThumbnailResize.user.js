@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TBT
 // @namespace    https://github.com/runisco
-// @version      2.3.1
+// @version      2.4
 // @updateURL    https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @downloadURL  https://github.com/Runisco/TBT/raw/main/TBThumbnailResize.user.js
 // @supportURL   https://github.com/Runisco/TBT/issues
